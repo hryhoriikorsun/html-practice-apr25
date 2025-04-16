@@ -1,1 +1,126 @@
+html {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.people {
+  --grid-columns: 2;
+
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(var(--grid-columns), 200px);
+  gap: 6px 40px;
+
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+  @media (min-width: 1000px) {
+    --grid-columns: 4;
+  }
+}
+
+.person {
+  width: 100%;
+  height: min-content;
+  padding: 12px;
+
+  transition:
+    background-color 0s,
+    border-radius 1s,
+    transform 1s;
+
+ &:hover {
+  background-color: rgba(238, 238, 238, 1);
+  border-radius: 12px;
+  transform: scale(1.2);
+  z-index: 1;
+ }
+
+ &:hover &__photo .photo__img {
+  border-radius: 60px;
+ }
+
+ &:hover &__details .details__extra {
+  visibility: visible;
+ }
+
+}
+
+.photo {
+  position: relative;
+
+  &__img {
+    display: flex;
+    width: 100%;
+
+    border-radius: 50%;
+
+    transition: border-radius 1s;
+  }
+
+  &__rank {
+    position: absolute;
+    right: 10px;
+    top: 50%; bottom: 50%;
+    transform: translate(-50%, -50%);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: 0%;
+
+    border-radius: 50%;
+    color: rgba(139, 0, 0, 1);
+    background-color: rgba(255, 255, 255, 1);
+  }
+}
+
+
+.details {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &__name {
+    margin-top: 8px;
+
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: 0%;
+
+    color: rgba(47, 79, 79, 1);
+  }
+
+  &__extra {
+    visibility:hidden;
+  }
+}
+
+.extra {
+  margin-top: 9px;
+
+  font-size: 21.6px;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: 0%;
+  
+  text-align: center;
+
+  color: rgba(0, 0, 0, 1);
+
+  &__sport::after {
+    content: ', ';
+  }
+
+  &__pay::before {
+    content: '$';
+  }
+}
 
